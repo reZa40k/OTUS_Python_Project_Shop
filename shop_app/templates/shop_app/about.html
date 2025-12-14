@@ -1,0 +1,47 @@
+{% extends "shop_app/base.html" %}
+{% load static%}
+
+{%block css %}
+    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+{%endblock %}
+
+{% block content %}
+    <h2 class="text-danger">{{ top }}</h2>
+<div class="table-responsive shadow rounded-4 bg-light mt-4">
+    <table class="table table-hover align-middle">
+        <thead class="table-danger">
+            <tr>
+                <th class="text-center py-3 text-danger" colspan="2">
+                    <i class="bi bi-person-circle me-2"></i>{{ contacts }}
+                </th>
+            </tr>
+        </thead>
+        <tbody class="bg-body-secondary">
+            <tr>
+                <td class="py-1 px-4 fw-bold text-danger">Почта:</td>
+                <td class="py-3 px-4">"info@m-audio.ru"</td>
+            </tr>
+            <tr>
+                <td class="py-1 px-4 fw-bold text-danger">Телефоны:</td>
+                <td class="py-3 px-4">+7-123-45-67; 8-800-123-45-67</td>
+            </tr>
+            <tr>
+                <td class="py-1 px-4 fw-bold text-danger">График работы</td>
+                <td class="py-3 px-4">Пн-Пт: 10:00-19:00, Сб: 11:00-17:00</td>
+            </tr>
+            <tr>
+                <td class="py-1 px-4 fw-bold text-danger">Сайт:</td>
+                <td class="py-3 px-4">"www.m-audio.ru"</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="bg-danger text-white py-5 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2025 М.Аудио. Все права не защищены.</p>
+        </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "shop_app/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 bg-white p-4 mb-4 mx-3 rounded custom-shadow">
+                <h2 class="text-center mb-4">Авторизация</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-danger btn-block w-100">Войти</button>
+                    <a href="{% url 'users:registration' %}" class="d-block mt-2">Зарегистрироваться</a>
+                </form>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
