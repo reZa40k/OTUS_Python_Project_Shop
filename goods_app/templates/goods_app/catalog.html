@@ -1,0 +1,53 @@
+{% extends "shop_app/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if user.is_staff %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-danger mb-0"></h2>
+        <div class="btn-group btn-group-lg" role="group">
+            <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-danger">
+                <i class="fas fa-cogs me-1"></i>Управление товарами
+            </a>
+            <a href="{% url 'catalog:product_create' %}" class="btn btn-success">
+                <i class="fas fa-plus me-2"></i>Добавить товар
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        {% for product in goods %}
+        <div class="col-lg-4 col-md-6 p-4">
+            <div class="card border-primary rounded custom-shadow">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'deps/images/not_image.png' %}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <a href="{% url 'catalog:product' product.slug %}">
+                        <p class="card-title">{{ product.name }}</p>
+                    </a>
+                    <p class="card-text text-truncate">{{ product.description }}</p>
+                    <div class="d-flex justify-content-between">
+                        <p><strong>{{ product.price }} руб.</strong></p>
+                        <a href="{% url 'basket:add_basket' product.pk %}" class="btn add-to-cart">
+                            <img class="mx-1" src="{% static 'deps/icons/cart.png' %}" alt="Каталог Icon" width="32" height="32">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <h4>Товаров не найдено</h4>
+            {% if user.is_staff %}
+            <a href="{% url 'catalog:product_create' %}" class="btn btn-success btn-lg">Добавить первый товар</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

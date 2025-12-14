@@ -1,0 +1,158 @@
+[
+    {
+        "model": "goods_app.products",
+        "pk": 1,
+        "fields": {
+            "name": "TV_Model_1",
+            "slug": "tv_model_1",
+            "description": "Модель телевизора №1",
+            "image": "goods_app_images/tv1.jpg",
+            "price": "70000.00",
+            "counts": 5,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 2,
+        "fields": {
+            "name": "TV_Model_2",
+            "slug": "tv_model_2",
+            "description": "Модель телевизора №2",
+            "image": "goods_app_images/tv2.jpg",
+            "price": "85000.00",
+            "counts": 7,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 3,
+        "fields": {
+            "name": "TV_Model_3",
+            "slug": "tv_model_3",
+            "description": "Модель телевизора №3",
+            "image": "goods_app_images/tv3.jpg",
+            "price": "99000.00",
+            "counts": 2,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 4,
+        "fields": {
+            "name": "NB_Model_1",
+            "slug": "nb_model_1",
+            "description": "Модель ноутбука №1",
+            "image": "goods_app_images/nb1.jpg",
+            "price": "50000.00",
+            "counts": 7,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 5,
+        "fields": {
+            "name": "NB_Model_2",
+            "slug": "nb_model_2",
+            "description": "Модель ноутбука №2",
+            "image": "goods_app_images/nb2.jpg",
+            "price": "57000.00",
+            "counts": 6,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 6,
+        "fields": {
+            "name": "NB_Model_3",
+            "slug": "nb_model_3",
+            "description": "Модель ноутбука №3",
+            "image": "goods_app_images/nb3.jpg",
+            "price": "120000.00",
+            "counts": 3,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 7,
+        "fields": {
+            "name": "Phone_Model_1",
+            "slug": "phone_model_1",
+            "description": "Модель телефона №1",
+            "image": "goods_app_images/phone1.jpg",
+            "price": "35000.00",
+            "counts": 10,
+            "category": 4
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 8,
+        "fields": {
+            "name": "Phone_Model_2",
+            "slug": "phone_model_2",
+            "description": "Модель телефона №2",
+            "image": "goods_app_images/phone2.png",
+            "price": "55000.00",
+            "counts": 5,
+            "category": 4
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 9,
+        "fields": {
+            "name": "Phone_Model_3",
+            "slug": "phone_model_3",
+            "description": "Модель телефона №3",
+            "image": "goods_app_images/phone3.jpg",
+            "price": "79000.00",
+            "counts": 4,
+            "category": 4
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 10,
+        "fields": {
+            "name": "Headphones_Model_1",
+            "slug": "headphones_model_1",
+            "description": "Модель наушников №1",
+            "image": "goods_app_images/headphones1.jpg",
+            "price": "15000.00",
+            "counts": 10,
+            "category": 5
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 11,
+        "fields": {
+            "name": "Headphones_Model_2",
+            "slug": "headphones_model_2",
+            "description": "Модель наушников №2",
+            "image": "goods_app_images/headphones2.jpg",
+            "price": "17500.00",
+            "counts": 15,
+            "category": 5
+        }
+    },
+    {
+        "model": "goods_app.products",
+        "pk": 12,
+        "fields": {
+            "name": "Headphones_Model_3",
+            "slug": "headphones_model_3",
+            "description": "Модель наушников №3",
+            "image": "goods_app_images/headphones3.jpg",
+            "price": "24000.00",
+            "counts": 1,
+            "category": 5
+        }
+    }
+]

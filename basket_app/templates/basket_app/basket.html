@@ -1,0 +1,72 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Корзина</h2>
+    {% if baskets %}
+        <div class="table-responsive mb-4">
+            <table class="table table-striped table-hover">
+                <thead class="bg-danger text-white">
+                    <tr>
+                        <th width="40%">Товар</th>
+                        <th width="15%">Цена</th>
+                        <th width="20%">Количество</th>
+                        <th width="15%">Сумма</th>
+                        <th width="10%">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in baskets %}
+                    <tr>
+                        <td>
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" 
+                                     alt="{{ item.product.name }}" 
+                                     class="rounded me-2" style="width: 50px; height: 50px; object-fit: cover;">
+                            {% endif %}
+                            <strong>{{ item.product.name }}</strong>
+                        </td>
+                        <td>{{ item.product.price }} ₽</td>
+                        <td>
+                            <form method="post" action="{% url 'basket_app:edit_basket' item.product.pk %}" class="d-inline">
+                                {% csrf_token %}
+                                <input type="number" name="counts" value="{{ item.counts }}" 
+                                       min="1" max="99" class="form-control d-inline w-auto" style="width: 70px;">
+                                <button type="submit" class="btn btn-sm btn-outline-primary mt-1">OK</button>
+                            </form>
+                        </td>
+                        <td><strong>{{ item.price_order  }} ₽</strong></td>
+                        <td>
+                            <a href="{% url 'basket_app:del_basket' item.product.pk %}" 
+                               class="btn btn-sm btn-danger"
+                               onclick="return confirm('Удалить {{ item.product.name }}?')">
+                                Удалить
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr class="table-success">
+                        <th colspan="2" class="text-end">Баланс: {{ user.balance }} руб.</th>
+                        <th colspan="1" class="text-end">Общая сумма:</th>
+                        <th colspan="2"><h5>{{ total_price }} ₽</h5></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="text-center">
+            <a href="/catalog/" class="btn btn-danger btn-lg">Продолжить покупки</a>
+            <a href="{% url 'orders:create_order' %}" class="btn btn-success btn-lg">Оформить заказ</a>
+        </div>
+    {% else %}
+        <div class="text-center py-5 my-5">
+            <i class="fas fa-shopping-cart fa-5x text-muted mb-4"></i>
+            <h3 class="text-muted mb-4">Корзина пуста</h3>
+            <p class="lead">Добавьте товары для оформления заказа</p>
+            <a href="/catalog/" class="btn btn-danger btn-lg">Перейти в каталог</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

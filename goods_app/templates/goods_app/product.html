@@ -1,0 +1,40 @@
+{% extends "shop_app/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mb-4">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <div class="h-100">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}"
+                            class="img-fluid rounded-start h-100 p-3" 
+                            data-bs-toggle="modal" data-bs-target="#imageModal1"
+                            alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'deps/images/not_image.png' %}"
+                            class="img-fluid rounded-start h-100 p-3" 
+                            alt="Нет изображения">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body p-4">
+                    <p class="card-text">Цена: <strong>{{ product.price }} руб.</strong></p>
+                    <p class="card-text">Модель: <strong>{{ product.name }} </strong></p>
+                    <p class="card-text">Категория: {{ product.category }} </p>
+                    <p class="card-text">Описание: {{ product.description }}</p>
+                    <form action="{% url 'basket:add_basket' product.pk %}" method="post" class="add-to-basket-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-cart-plus"></i> В корзину
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow">
+                <div class="card-header bg-danger text-white text-center py-4">
+                    <h1 class="mb-0">Удалить товар?</h1>
+                </div>
+                <div class="card-body p-5 text-center">
+                    <h3 class="text-danger mb-3">{{ object.name }}</h3>
+                    <p class="lead">ID: {{ object.pk }} | {{ object.price }} ₽ | {{ object.counts }} шт.</p>
+                    <form method="post" class="mt-4 d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-lg px-4">Да, удалить</button>
+                    </form>
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary btn-lg px-4 ms-3">Отмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+[
+    {
+        "model": "goods_app.categories",
+        "pk": 1,
+        "fields": {
+            "name": "Все товары",
+            "slug": "all"
+        }
+    },
+    {
+        "model": "goods_app.categories",
+        "pk": 2,
+        "fields": {
+            "name": "Телевизоры",
+            "slug": "televizory"
+        }
+    },
+    {
+        "model": "goods_app.categories",
+        "pk": 3,
+        "fields": {
+            "name": "Ноутбуки",
+            "slug": "noutbuki"
+        }
+    },
+    {
+        "model": "goods_app.categories",
+        "pk": 4,
+        "fields": {
+            "name": "Телефоны",
+            "slug": "telefony"
+        }
+    },
+    {
+        "model": "goods_app.categories",
+        "pk": 5,
+        "fields": {
+            "name": "Наушники",
+            "slug": "naushniki"
+        }
+    }
+]

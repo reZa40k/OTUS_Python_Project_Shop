@@ -1,0 +1,16 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-danger mb-4">
+        {% if form.instance.pk %}Редактировать{% else %}Добавить{% endif %} товар
+    </h1> 
+    <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">{% if form.instance.pk %}Сохранить изменения{% else %}Добавить товар{% endif %}</button>
+        <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary mt-3">Отмена</a>
+    </form>
+</div>
+{% endblock %}
