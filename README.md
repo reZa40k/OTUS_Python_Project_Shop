@@ -1,0 +1,2 @@
+# OTUS_Python_Project_Shop
+Project_Shop_Django
