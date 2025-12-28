@@ -14,14 +14,13 @@ def client():
     return Client()
 
 @fixture
-def staff_user(db):
+def staff_user():
     '''
     Фикстура создания CustomUser с правами персонала
     '''
     from users_app.models import CustomUser
-    
     user = CustomUser.objects.create_user(
-        email='stafftest@test.ru', 
+        email='stafftest@test.ru',
         password='testpass123'
     )
     user.is_staff = True

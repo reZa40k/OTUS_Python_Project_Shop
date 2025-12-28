@@ -50,10 +50,10 @@ def catalog(request, category_slug=None):
 
 
 def product(request, product_slug):
-    product = Products.objects.get(slug=product_slug)
+    test_product = Products.objects.get(slug=product_slug)
     context = {
-        "product": product,
-        "title": product.name,
+        "product": test_product,
+        "title": test_product.name,
     }
 
     return render(request, "goods_app/product.html", context)

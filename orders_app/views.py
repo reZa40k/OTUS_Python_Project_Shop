@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.db import transaction
 from django.utils import timezone
 
-from .models import Order, OrderItem
 from basket_app.models import Basket
+from .models import Order, OrderItem
 
 
 def create_order(request):

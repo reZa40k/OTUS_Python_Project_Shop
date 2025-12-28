@@ -36,15 +36,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', 
+    # pylint: disable=trailing-whitespace
     
     'shop_app.apps.ShopAppConfig',
     'goods_app.apps.GoodsAppConfig',
     'users_app.apps.UsersAppConfig',
     'basket_app.apps.BasketAppConfig',
     'orders_app.apps.OrdersAppConfig',
-    
-    #'django_celery_results',
 ]
 
 MIDDLEWARE = [

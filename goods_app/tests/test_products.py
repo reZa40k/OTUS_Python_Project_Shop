@@ -62,7 +62,7 @@ class TestProductCRUD:
         'category': str(test_product.category.pk),
         'image': ''
     }
-        response = client.post(url, data)        
+        response = client.post(url, data)
         assert response.status_code == 302
         test_product.refresh_from_db()
         assert test_product.name == 'Обновленный товар'
