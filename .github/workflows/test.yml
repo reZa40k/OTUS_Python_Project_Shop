@@ -1,17 +1,27 @@
 name: Run tests
 
-on: [push,pull_request] 
+on: [push, pull_request]
 
 permissions:
   contents: read
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
+    env:
+      CELERY_TASK_ALWAYS_EAGER: "true"
+      CELERY_TASK_EAGER_PROPAGATES: "true"
+      CELERY_ALWAYS_EAGER: "true"
+      CELERY_EAGER_PROPAGATES: "true"
+      DJANGO_SETTINGS_MODULE: "config.settings"
+      SECRET_KEY: "django-insecure-test-key-for-ci"
+      DEBUG: "True"
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.12
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.12"
     - name: Install dependencies
@@ -21,4 +31,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -s --cov --cov-report html --cov-fail-under 70
-
