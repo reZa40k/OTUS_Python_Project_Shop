@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'users_app.apps.UsersAppConfig',
     'basket_app.apps.BasketAppConfig',
     'orders_app.apps.OrdersAppConfig',
+    
+    #'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,8 @@ LOGOUT_REDIRECT_URL = '/user/login/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Настройка Celery
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.db.models import Q
 from django.views.generic import (
@@ -10,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
 from goods_app.models import Products
+from goods_app.tasks import info_add_poduct, info_edit_poduct, info_del_poduct
 
 
 def catalog(request, category_slug=None):
@@ -89,6 +91,15 @@ class ProductCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
     template_name = "goods_app/product_edit.html"
     success_url = reverse_lazy("catalog:product_list")
 
+    def form_valid(self, form):
+        """
+        Вывод сообщения в консоль
+        """
+        response = super().form_valid(form)
+        messages.success(self.request, "Товар добавлен успешно")
+        info_add_poduct.delay(self.object.name)
+        return response
+
 
 class ProductUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     """
@@ -100,6 +111,15 @@ class ProductUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     template_name = "goods_app/product_edit.html"
     success_url = reverse_lazy("catalog:product_list")
 
+    def form_valid(self, form):
+        """
+        Вывод сообщения в консоль
+        """
+        response = super().form_valid(form)
+        messages.success(self.request, "Товар изменен успешно")
+        info_edit_poduct.delay(self.object.name)
+        return response
+
 
 class ProductDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
     """
@@ -109,3 +129,14 @@ class ProductDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
     model = Products
     template_name = "goods_app/product_del.html"
     success_url = reverse_lazy("catalog:index")
+
+    def post(self, request, *args, **kwargs):
+        """
+        Вывод сообщения в консоль
+        """
+        self.object = self.get_object()
+        product_name = self.object.name
+        info_del_poduct.delay(product_name)
+        response = super().post(request, *args, **kwargs)
+        messages.success(request, "Товар удален успешно")
+        return response

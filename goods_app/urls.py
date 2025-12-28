@@ -8,7 +8,7 @@ from .views import (
     ProductDeleteView,
 )
 
-app_name = "goods_app"
+app_name = "catalog"
 
 urlpatterns = [
     path("", catalog, name="index"),
